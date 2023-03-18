@@ -1,4 +1,5 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
 import {
   createEditor,
   Descendant,
@@ -12,7 +13,6 @@ import {
 import { withHistory } from "slate-history";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 import { BulletedListElement } from "./custom-types";
-
 const SHORTCUTS = {
   "*": "list-item",
   "-": "list-item",
@@ -32,6 +32,13 @@ const TextArea = () => {
     () => withShortcuts(withReact(withHistory(createEditor()))),
     []
   );
+
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
 
   const handleDOMBeforeInput = useCallback(
     (e: InputEvent) => {
@@ -72,6 +79,18 @@ const TextArea = () => {
 
   return (
     <Slate editor={editor} value={initialValue}>
+      <div>
+        <Document
+          file="https://arxiv.org/pdf/2101.04882.pdf"
+          onLoadSuccess={onDocumentLoadSuccess}
+          options={{ workerSrc: "pdf.worker.js" }}
+        >
+          <Page pageNumber={pageNumber} />
+        </Document>
+        <p>
+          Page {pageNumber} of {numPages}
+        </p>
+      </div>
       <Editable
         onDOMBeforeInput={handleDOMBeforeInput}
         renderElement={renderElement}
