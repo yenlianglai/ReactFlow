@@ -8,22 +8,22 @@ import CustomNode from "./CustomNode/CustomNode.jsx";
 const nodes = [
   {
     id: "1",
-    position: { x: 100, y: 100 },
+    position: { x: 0, y: 500 },
     data: { label: "Node 1" },
     type: "resizeRotate",
     sourcePosition: Position.Bottom,
     targetPosition: Position.Top,
     selected: true,
-    style: { width: 180, height: 100 },
+    style: { width: 400, height: 600 },
   },
   {
     id: "2",
-    position: { x: 100, y: 400 },
+    position: { x: 500, y: 500 },
     data: { label: "Node 2" },
     type: "resizeRotate",
     sourcePosition: Position.Bottom,
     targetPosition: Position.Top,
-    style: { width: 180, height: 100 },
+    style: { width: 400, height: 600 },
   },
 ];
 

@@ -9,11 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/css": "^11.10.6",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.13",
     "@reactflow/node-resizer": "^2.1.0",
+    "emotion-icons": "^3.27.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reactflow": "^11.6.1",
     "slate": "^0.91.4",
+    "slate-history": "^0.86.0",
     "slate-react": "^0.91.11",
     "styled-components": "^5.3.9"
   },
