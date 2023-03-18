@@ -14,7 +14,7 @@ const nodes = [
     sourcePosition: Position.Bottom,
     targetPosition: Position.Top,
     selected: true,
-    style: { width: 400, height: 600 },
+    style: { width: "800px", height: "fit-content" },
   },
   {
     id: "2",
@@ -23,7 +23,7 @@ const nodes = [
     type: "resizeRotate",
     sourcePosition: Position.Bottom,
     targetPosition: Position.Top,
-    style: { width: 400, height: 600 },
+    style: { width: "800px", height: "fit-content" },
   },
 ];
 

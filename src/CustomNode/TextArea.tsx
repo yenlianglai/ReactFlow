@@ -13,6 +13,8 @@ import {
 import { withHistory } from "slate-history";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 import { BulletedListElement } from "./custom-types";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
 const SHORTCUTS = {
   "*": "list-item",
   "-": "list-item",
@@ -79,11 +81,16 @@ const TextArea = () => {
 
   return (
     <Slate editor={editor} value={initialValue}>
-      <div>
+      <div style={{ width: "800px" }}>
         <Document
           file="https://arxiv.org/pdf/2101.04882.pdf"
           onLoadSuccess={onDocumentLoadSuccess}
-          options={{ workerSrc: "pdf.worker.js" }}
+          options={{
+            workerSrc: "pdf.worker.js",
+            cMapUrl: `https://unpkg.com/pdfjs-dist@${pdfjs.version}/cmaps/`,
+            cMapPacked: true,
+          }}
+          pageMode="fullScreen"
         >
           <Page pageNumber={pageNumber} />
         </Document>
